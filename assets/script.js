@@ -19,18 +19,26 @@ function tripOptions() {}
 //walk, drive, etc
 
 var positionStackApiKey = "5e790f29e566f2f69cba98b84c761f7e";
-var cityName = "New-York";
-var llRequestURL =
-  "http://api.positionstack.com/v1/forward?access_key=" +
-  positionStackApiKey +
-  "&query=" +
-  cityName;
+var cityName = "Atlanta";
+
 var locationA = {
   name: "",
-  latitude: "",
+  latitude: 0,
   longitude: 0,
 };
-function getLocation() {
+var locationB = {
+  name: "",
+  latitude: 0,
+  longitude: 0,
+};
+
+function getLocationA() {
+  cityName = locationA.name;
+  var llRequestURL =
+    "http://api.positionstack.com/v1/forward?access_key=" +
+    positionStackApiKey +
+    "&query=" +
+    cityName;
   $.ajax({
     url: llRequestURL,
     method: "GET",
@@ -38,26 +46,43 @@ function getLocation() {
     console.log(response);
     locationA.latitude = response.data[0].latitude;
     locationA.longitude = response.data[0].longitude;
-    locationA.longitude = locationA.longitude * -1;
-    console.log(locationA.latitude);
-    console.log(locationA.longitude);
+    locationA.longitude = locationB.longitude * -1;
+    console.log("origin " + locationA.latitude);
+  });
+}
+function getLocationB() {
+  cityName = locationB.name;
+  var llRequestURL =
+    "http://api.positionstack.com/v1/forward?access_key=" +
+    positionStackApiKey +
+    "&query=" +
+    cityName;
+  $.ajax({
+    url: llRequestURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    locationB.latitude = response.data[0].latitude;
+    locationB.longitude = response.data[0].longitude;
+    locationB.longitude = locationB.longitude * -1;
+    console.log("destination " + locationB.latitude);
   });
 }
 
-var locationOne = locationA.latitude + "," + locationA.longitude;
-var locationTwo = locationB.latitude + "," + locationB.longitude;
-var formofTransportation = "driving-car";
-var routeApi =
-  "https://api.openrouteservice.org/v2/directions/" +
-  formofTransportation +
-  "?api_key=" +
-  openRoutesApiKey +
-  "&start=" +
-  locationOne +
-  "&end=" +
-  locationTwo;
+// var locationOne = locationA.latitude + "," + locationA.longitude;
+// var locationTwo = locationB.latitude + "," + locationB.longitude;
 
 function getRoute() {
+  var formofTransportation = "driving-car";
+  var routeApi =
+    "https://api.openrouteservice.org/v2/directions/" +
+    formofTransportation +
+    "?api_key=" +
+    openRoutesApiKey +
+    "&start=" +
+    locationOne +
+    "&end=" +
+    locationTwo;
   $.ajax({
     url: routeApi,
     method: "GET",
@@ -77,12 +102,21 @@ function getRoute() {
 
 lockInA.addEventListener("click", function () {
   var startLocation = document.getElementById("origin-field");
-  localStorage.setItem("Origin", startLocation.value);
+  localStorage.setItem("origin", startLocation.value);
 });
 lockInB.addEventListener("click", function () {
   var endLocation = document.getElementById("output-field");
-  localStorage.setItem("Destination", endLocation.value);
+  localStorage.setItem("destination", endLocation.value);
 });
 submit.addEventListener("click", function () {
-  getLocation();
+  var origin = localStorage.getItem("origin");
+  var destination = localStorage.getItem("destination");
+  locationA.name = origin;
+  locationB.name = destination;
+  console.log("This is the origin " + origin);
+  console.log("This is the destination " + destination);
+  getLocationA();
+  getLocationB();
+
+  getRoute();
 });
