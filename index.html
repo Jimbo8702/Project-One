@@ -4,10 +4,92 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <!-- <link rel="stylesheet for GOOGLE FONTS" href="##" /> -->
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Project One</title>
   </head>
+
+  <!-- Buttons
+  <button class="button">Normal</button>
+  <button class="button is-primary">Normal</button>
+  <button class="button is-link">Normal</button>
+  <button class="button is-info">Normal</button>
+  <button class="button is-success">Normal</button>
+  <button class="button is-warning">Normal</button>
+  <button class="button is-danger">Normal</button> -->
+
+  <!-- input fields -->
+
   <body>
-    <h1>Hello world</h1>
+    <!-- This is the top header or title space -->
+    <div class="columns is-mobile is-centered">
+      <div class="column is-half">
+        <h1 id="title" class="title is-1">Project Name</h1>
+        <br />
+        <p class="bd-notification is-primary"></p>
+      </div>
+    </div>
+    <!-- This is the two fields for field A and field B, they will stack on mobile -->
+    <div class="columns is-desktop is-centered">
+      <div class="column is-two-fifths">
+        Field A<input
+          id="origin-field"
+          class="input"
+          type="text"
+          placeholder="Starting location"
+        /><button id="origin-button" class="button is-primary">Lock-in</button>
+      </div>
+      <!-- the below colum is simply empty space -->
+      <div class="column is-one-fifth"></div>
+      <div class="column is-two-fifths">
+        Field B<input
+          id="output-field"
+          class="input"
+          type="text"
+          placeholder="Ending location"
+        /><button id="ending-button" class="button is-primary">Lock-in</button>
+      </div>
+    </div>
+    <!-- this is the results output space -->
+    <div id="results-output" class="columns is-mobile is-centered is-centered">
+      <div
+        class="
+          column
+          is-three-quarters-mobile
+          is-two-thirds-tablet
+          is-half-desktop
+          is-one-third-widescreen
+          is-one-quarter-fullhd
+        "
+      >
+        <p>This is the space for the output.</p>
+      </div>
+    </div>
+    <!-- This is the bank pulling results from local storage of previous searches -->
+    <div class="columns is-mobile is-centered">
+      <div
+        id="memory-box"
+        class="
+          column
+          is-three-quarters-mobile
+          is-two-thirds-tablet
+          is-half-desktop
+          is-one-third-widescreen
+          is-one-quarter-fullhd
+        "
+      >
+        <p>This is the space for the last searched items.</p>
+        <!-- This is the last searched items tagged span within the memory box -->
+        <div class="tags has-addons">
+          <span class="tag is-danger">Last searched item</span>
+          <a class="tag is-delete"></a>
+        </div>
+      </div>
+    </div>
     <script src="./assets/script.js"></script>
   </body>
 </html>

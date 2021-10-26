@@ -1,4 +1,5 @@
 console.log(this);
+<<<<<<< HEAD
 
 //DEPENDENCES
 
@@ -18,3 +19,5 @@ function getLocation() {}
 //USER Interaction
 
 //Inilizations
+=======
+>>>>>>> main
