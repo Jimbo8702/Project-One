@@ -1,8 +1,8 @@
 console.log(this);
-<<<<<<< HEAD
 
 //DEPENDENCES
-
+var lockInA = document.querySelector("#origin-button");
+var lockInB = document.querySelector("#ending-button");
 //DATA
 
 //FUNCTIONS
@@ -19,5 +19,11 @@ function getLocation() {}
 //USER Interaction
 
 //Inilizations
-=======
->>>>>>> main
+lockInA.addEventListener("click", function () {
+  var startLocation = document.getElementById("origin-field");
+  localStorage.setItem("Origin", startLocation.value);
+});
+lockInB.addEventListener("click", function () {
+  var endLocation = document.getElementById("output-field");
+  localStorage.setItem("Destination", endLocation.value);
+});
