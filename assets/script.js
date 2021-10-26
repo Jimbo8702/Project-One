@@ -23,12 +23,12 @@ var cityName = "Atlanta";
 
 var locationA = {
   name: "",
-  latitude: "",
+  latitude: 0,
   longitude: 0,
 };
 var locationB = {
   name: "",
-  latitude: "",
+  latitude: 0,
   longitude: 0,
 };
 
@@ -68,9 +68,44 @@ function getLocationB() {
     console.log("destination " + locationB.latitude);
   });
 }
+
+// var locationOne = locationA.latitude + "," + locationA.longitude;
+// var locationTwo = locationB.latitude + "," + locationB.longitude;
+
+function getRoute() {
+  var formofTransportation = "driving-car";
+  var routeApi =
+    "https://api.openrouteservice.org/v2/directions/" +
+    formofTransportation +
+    "?api_key=" +
+    openRoutesApiKey +
+    "&start=" +
+    locationOne +
+    "&end=" +
+    locationTwo;
+  $.ajax({
+    url: routeApi,
+    method: "GET",
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
+//we need to multiply by negative one
+
 //USER Interaction
 
 //Inilizations
+// <<<<<<< HEAD
+// =======
+// <<<<<<< HEAD
+// =======
+// <<<<<<< HEAD
+// =======
+// >>>>>>> main
 
 lockInA.addEventListener("click", function () {
   var startLocation = document.getElementById("origin-field");
@@ -89,4 +124,12 @@ submit.addEventListener("click", function () {
   console.log("This is the destination " + destination);
   getLocationA();
   getLocationB();
+
+  getRoute();
 });
+// <<<<<<< HEAD
+// =======
+// >>>>>>> main
+// >>>>>>> 51f19944cbf97e8331405ff5d00eedb70f7ccce2
+// /// super small change
+// >>>>>>> main
