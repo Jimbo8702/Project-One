@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <<<<<<< HEAD
+    <link rel="stylesheet" href="./assets/style.css" />
+    ======= >>>>>>> main
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <!-- <link rel="stylesheet for GOOGLE FONTS" href="##" /> -->
-    <link rel="stylesheet" href="./assets/style.css" />
+
     <title>Project One</title>
   </head>
 
@@ -26,16 +29,24 @@
 
   <body>
     <!-- This is the top header or title space -->
-    <div class="columns is-mobile is-centered">
+    <div id="title-box" class="columns is-mobile is-centered">
       <div class="column is-half">
         <h1 id="title" class="title is-1">Project Name</h1>
-        <br />
-        <p class="bd-notification is-primary"></p>
+        <p id="title-p" class="bd-notification is-primary"></p>
       </div>
     </div>
-    <!-- This is the two fields for field A and field B, they will stack on mobile -->
-    <div class="columns is-desktop is-centered">
-      <div class="column is-two-fifths">
+    <!-- This is the 4 columns for Trip name, field A, and field B, they will stack on mobile -->
+    <div id="four-columns" class="columns is-desktop is-centered">
+      <div id="name-box" class="column is-one-fifth">
+        Trip Name<input
+          id="name"
+          class="input"
+          type="text"
+          placeholder="Starting location"
+        /><button id="origin-button" class="button is-primary">Lock-in</button>
+      </div>
+      <!-- Field A input and button -->
+      <div id="field-a-box" class="column is-two-fifths">
         Field A<input
           id="origin-field"
           class="input"
@@ -43,9 +54,10 @@
           placeholder="Starting location"
         /><button id="origin-button" class="button is-primary">Lock-in</button>
       </div>
-      <!-- the below colum is simply empty space -->
-      <div class="column is-one-fifth"></div>
-      <div class="column is-two-fifths">
+      <!-- The below colum is simply empty space -->
+      <div class="column w-5 p-3"></div>
+      <!-- Field B input and button -->
+      <div id="field-b-box" class="column is-two-fifths">
         Field B<input
           id="output-field"
           class="input"
@@ -70,7 +82,7 @@
       </div>
     </div>
     <!-- This is the bank pulling results from local storage of previous searches -->
-    <div class="columns is-mobile is-centered">
+    <div id="memory-container" class="columns is-mobile is-centered">
       <div
         id="memory-box"
         class="
@@ -82,14 +94,19 @@
           is-one-quarter-fullhd
         "
       >
-        <p>This is the space for the last searched items.</p>
+        <p id="memoryp">This is the space for the last searched items.</p>
         <!-- This is the last searched items tagged span within the memory box -->
-        <div class="tags has-addons">
-          <span class="tag is-danger">Last searched item</span>
+        <div id="last-searched-box" class="tags has-addons">
+          <span class="tag is-danger"
+            >Last searched item will go here! Must connect with a function that
+            retrieves by the trip name</span
+          >
           <a class="tag is-delete"></a>
         </div>
       </div>
     </div>
+    <button id="submit" class="button is-primary">Submit</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
 </html>
