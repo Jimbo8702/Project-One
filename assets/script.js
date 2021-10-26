@@ -23,12 +23,12 @@ var cityName = "Atlanta";
 
 var locationA = {
   name: "",
-  latitude: "",
+  latitude: 0,
   longitude: 0,
 };
 var locationB = {
   name: "",
-  latitude: "",
+  latitude: 0,
   longitude: 0,
 };
 
@@ -68,6 +68,34 @@ function getLocationB() {
     console.log("destination " + locationB.latitude);
   });
 }
+
+// var locationOne = locationA.latitude + "," + locationA.longitude;
+// var locationTwo = locationB.latitude + "," + locationB.longitude;
+
+function getRoute() {
+  var formofTransportation = "driving-car";
+  var routeApi =
+    "https://api.openrouteservice.org/v2/directions/" +
+    formofTransportation +
+    "?api_key=" +
+    openRoutesApiKey +
+    "&start=" +
+    locationOne +
+    "&end=" +
+    locationTwo;
+  $.ajax({
+    url: routeApi,
+    method: "GET",
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
+//we need to multiply by negative one
+
 //USER Interaction
 
 //Inilizations
@@ -91,5 +119,7 @@ submit.addEventListener("click", function () {
   console.log("This is the destination " + destination);
   getLocationA();
   getLocationB();
+
+  getRoute();
 });
 >>>>>>> main
