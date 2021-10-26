@@ -71,8 +71,6 @@ function getLocationB() {
 //USER Interaction
 
 //Inilizations
-<<<<<<< HEAD
-=======
 
 lockInA.addEventListener("click", function () {
   var startLocation = document.getElementById("origin-field");
@@ -92,4 +90,3 @@ submit.addEventListener("click", function () {
   getLocationA();
   getLocationB();
 });
->>>>>>> main
