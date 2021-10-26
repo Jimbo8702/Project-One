@@ -1,7 +1,8 @@
 console.log(this);
 
 //DEPENDENCES
-
+var lockInA = document.querySelector("#origin-button");
+var lockInB = document.querySelector("#ending-button");
 //DATA
 
 //FUNCTIONS
@@ -15,7 +16,14 @@ function getLocation() {}
 //take user input of city and convert it to zipcode or lat long
 //give api lat long to get informatin back
 
-
 //USER Interaction
 
 //Inilizations
+lockInA.addEventListener("click", function () {
+  var startLocation = document.getElementById("origin-field");
+  localStorage.setItem("Origin", startLocation.value);
+});
+lockInB.addEventListener("click", function () {
+  var endLocation = document.getElementById("output-field");
+  localStorage.setItem("Destination", endLocation.value);
+});
