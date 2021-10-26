@@ -99,8 +99,13 @@ function getRoute() {
 //USER Interaction
 
 //Inilizations
-<<<<<<< HEAD
-=======
+// <<<<<<< HEAD
+// =======
+// <<<<<<< HEAD
+// =======
+// <<<<<<< HEAD
+// =======
+// >>>>>>> main
 
 lockInA.addEventListener("click", function () {
   var startLocation = document.getElementById("origin-field");
@@ -122,4 +127,9 @@ submit.addEventListener("click", function () {
 
   getRoute();
 });
->>>>>>> main
+// <<<<<<< HEAD
+// =======
+// >>>>>>> main
+// >>>>>>> 51f19944cbf97e8331405ff5d00eedb70f7ccce2
+// /// super small change
+// >>>>>>> main
