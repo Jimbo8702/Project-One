@@ -3,6 +3,7 @@ console.log(this);
 //DEPENDENCES
 var lockInA = document.querySelector("#origin-button");
 var lockInB = document.querySelector("#ending-button");
+var submit = document.querySelector("#submit");
 var openRoutesApiKey =
   "5b3ce3597851110001cf624821c7a5f3efe347c5ae20608b3c765691";
 var positionStackApiKey = "5e790f29e566f2f69cba98b84c761f7e";
@@ -24,19 +25,56 @@ var llRequestURL =
   positionStackApiKey +
   "&query=" +
   cityName;
+var locationA = {
+  name: "",
+  latitude: "",
+  longitude: 0,
+};
 function getLocation() {
   $.ajax({
     url: llRequestURL,
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    locationA.latitude = response.data[0].latitude;
+    locationA.longitude = response.data[0].longitude;
+    locationA.longitude = locationA.longitude * -1;
+    console.log(locationA.latitude);
+    console.log(locationA.longitude);
   });
 }
-getLocation(); //we need to multiply by negative one
+
+var locationOne = locationA.latitude + "," + locationA.longitude;
+var locationTwo = locationB.latitude + "," + locationB.longitude;
+var formofTransportation = "driving-car";
+var routeApi =
+  "https://api.openrouteservice.org/v2/directions/" +
+  formofTransportation +
+  "?api_key=" +
+  openRoutesApiKey +
+  "&start=" +
+  locationOne +
+  "&end=" +
+  locationTwo;
+
+function getRoute() {
+  $.ajax({
+    url: routeApi,
+    method: "GET",
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
+//we need to multiply by negative one
 
 //USER Interaction
 
 //Inilizations
+
 lockInA.addEventListener("click", function () {
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("Origin", startLocation.value);
@@ -44,4 +82,7 @@ lockInA.addEventListener("click", function () {
 lockInB.addEventListener("click", function () {
   var endLocation = document.getElementById("output-field");
   localStorage.setItem("Destination", endLocation.value);
+});
+submit.addEventListener("click", function () {
+  getLocation();
 });
