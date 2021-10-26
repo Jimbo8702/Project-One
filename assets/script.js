@@ -1,5 +1,4 @@
 console.log(this);
-<<<<<<< HEAD
 
 //DEPENDENCES
 
@@ -16,8 +15,7 @@ function getLocation() {}
 //take user input of city and convert it to zipcode or lat long
 //give api lat long to get informatin back
 
+
 //USER Interaction
 
 //Inilizations
-=======
->>>>>>> main
