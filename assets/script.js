@@ -7,7 +7,10 @@ var openRoutesApiKey =
   "5b3ce3597851110001cf624821c7a5f3efe347c5ae20608b3c765691";
 var positionStackApiKey = "5e790f29e566f2f69cba98b84c761f7e";
 //DATA
-
+const searchedTrips = [];
+function setTripInput(){
+  localStorage.
+}
 //FUNCTIONS
 function setUserInput() {}
 //gets the user input and puts it into local storage
@@ -124,7 +127,10 @@ function getRoute() {
 // <<<<<<< HEAD
 // =======
 // >>>>>>> main
-
+tripName.addEventListener("click", function () {
+  var trip = document.getElementById("trip-name");
+  localStorage.setItem("trip-name", trip.value);
+});
 lockInA.addEventListener("click", function () {
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("origin", startLocation.value);
