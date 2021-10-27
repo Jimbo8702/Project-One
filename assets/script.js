@@ -91,7 +91,7 @@ function getRoute() {
     });
 }
 
-hereApiKey = "owwQPmvcB76JMPSBwfPmXyceEJS1h6eYxi1Sx1bblfI";
+hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
