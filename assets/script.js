@@ -42,7 +42,6 @@ function getLocationA() {
     locationA.longitude = response.data[0].longitude;
     console.log("origin " + locationA.latitude);
     localStorage.setItem("locationA", JSON.stringify(locationA));
-    return locationA;
   });
 }
 function getLocationB() {
@@ -61,7 +60,6 @@ function getLocationB() {
     locationB.longitude = response.data[0].longitude;
     console.log("destination " + locationB.latitude);
     localStorage.setItem("locationB", JSON.stringify(locationB));
-    return locationB;
   });
 }
 
@@ -93,6 +91,7 @@ function getRoute() {
     });
 }
 
+hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
@@ -101,7 +100,7 @@ function setRoute() {
 
   // Instantiate a map and platform object:
   var platform = new H.service.Platform({
-    apikey: "owwQPmvcB76JMPSBwfPmXyceEJS1h6eYxi1Sx1bblfI",
+    apikey: hereApiKey,
   });
   // Retrieve the target element for the map:
   var targetElement = document.getElementById("map-container");
@@ -134,6 +133,7 @@ function setRoute() {
   // Define a callback function to process the routing response:
   var onResult = function (result) {
     // ensure that at least one route was found
+
     if (result.routes.length) {
       result.routes[0].sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
@@ -192,15 +192,6 @@ function setRoute() {
 // }
 //USER Interaction
 
-//Inilizations
-// <<<<<<< HEAD
-// =======
-// <<<<<<< HEAD
-// =======
-// <<<<<<< HEAD
-// =======
-// >>>>>>> main
-
 function setLocation() {
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("origin", startLocation.value);
@@ -214,6 +205,6 @@ submit.addEventListener("click", function () {
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
-  getRoute();
+  // getRoute();
   setRoute();
 });
