@@ -97,13 +97,21 @@ function getRoute() {
     });
 }
 
-//Function below will return the total value of cost in all local storage trips. Function will need to be tweaked for correct key and then nested within another function when being called.
-// function totalCost () {
-//   var sum = 0
-//   for (let x=0;x< localStorage.length;x++ ){
-//   localStorage."PLACEHOLDERFORCOSTKEY"[i] += sum;
+//Functions below are intended to aggregate all saved trips total cost and CO2 impact. The .key placeholder will need to be updated once the localStorage object is populated from APIs. Functions will also need to be nested within other functions.""
+
+// function totalCost() {
+//   var sum = 0;
+//   for (x = 0; x < localStorage.length; x++) {
+//     sum += localStorage.key[i];
+//   }
+//   return sum;
 // }
-//   return sum
+// function totalCO2() {
+//   var CO2 = 0;
+//   for (x = 0; x < localStorage.length; x++) {
+//     CO2 += localStorage.key[i];
+//   }
+//   return CO2;
 // }
 //USER Interaction
 
