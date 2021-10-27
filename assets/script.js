@@ -97,6 +97,14 @@ function getRoute() {
     });
 }
 
+//Function below will return the total value of cost in all local storage trips. Function will need to be tweaked for correct key and then nested within another function when being called.
+// function totalCost () {
+//   var sum = 0
+//   for (let x=0;x< localStorage.length;x++ ){
+//   localStorage."PLACEHOLDERFORCOSTKEY"[i] += sum;
+// }
+//   return sum
+// }
 //USER Interaction
 
 //Inilizations
