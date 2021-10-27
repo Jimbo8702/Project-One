@@ -1,5 +1,3 @@
-console.log(this);
-
 //DEPENDENCES
 var lockInA = document.querySelector("#origin-button");
 var lockInB = document.querySelector("#ending-button");
@@ -46,8 +44,10 @@ function getLocationA() {
     console.log(response);
     locationA.latitude = response.data[0].latitude;
     locationA.longitude = response.data[0].longitude;
-    locationA.longitude = locationB.longitude * -1;
+    locationA.longitude = locationA.longitude * -1;
     console.log("origin " + locationA.latitude);
+    localStorage.setItem("locationA", JSON.stringify(locationA));
+    console.log("New attempt" + localStorage.getItem("locationA"));
   });
 }
 function getLocationB() {
@@ -66,13 +66,15 @@ function getLocationB() {
     locationB.longitude = response.data[0].longitude;
     locationB.longitude = locationB.longitude * -1;
     console.log("destination " + locationB.latitude);
+    localStorage.setItem("locationB", JSON.stringify(locationB));
   });
 }
 
-// var locationOne = locationA.latitude + "," + locationA.longitude;
-// var locationTwo = locationB.latitude + "," + locationB.longitude;
-
 function getRoute() {
+  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+  var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  var locationOne = locOrigin.latitude + "," + locOrigin.longitude;
+  var locationTwo = locDestination.latitude + "," + locDestination.longitude;
   var formofTransportation = "driving-car";
   var routeApi =
     "https://api.openrouteservice.org/v2/directions/" +
@@ -83,6 +85,7 @@ function getRoute() {
     locationOne +
     "&end=" +
     locationTwo;
+  console.log(routeApi);
   $.ajax({
     url: routeApi,
     method: "GET",
@@ -120,16 +123,8 @@ submit.addEventListener("click", function () {
   var destination = localStorage.getItem("destination");
   locationA.name = origin;
   locationB.name = destination;
-  console.log("This is the origin " + origin);
-  console.log("This is the destination " + destination);
   getLocationA();
   getLocationB();
 
   getRoute();
 });
-// <<<<<<< HEAD
-// =======
-// >>>>>>> main
-// >>>>>>> 51f19944cbf97e8331405ff5d00eedb70f7ccce2
-// /// super small change
-// >>>>>>> main
