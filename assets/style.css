@@ -14,7 +14,18 @@
   --prp5: rgb(24, 78, 119);
 }
 
-.button {
+#submit {
+  background-color: var(--prp3);
+  margin: 2px;
+  margin-top: 6px;
+}
+
+#submit:hover {
+  background-color: var(--prp1);
+}
+
+#submit:active {
+  background-color: var(--prp5);
 }
 
 body {
