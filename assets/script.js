@@ -93,7 +93,6 @@ function getRoute() {
     });
 }
 
-<<<<<<< HEAD
 function setRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
@@ -175,7 +174,6 @@ function setRoute() {
   });
 }
 
-=======
 //Functions below are intended to aggregate all saved trips total cost and CO2 impact. The .key placeholder will need to be updated once the localStorage object is populated from APIs. Functions will also need to be nested within other functions.""
 
 // function totalCost() {
@@ -192,7 +190,6 @@ function setRoute() {
 //   }
 //   return CO2;
 // }
->>>>>>> main
 //USER Interaction
 
 //Inilizations
