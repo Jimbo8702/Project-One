@@ -212,15 +212,16 @@ submit.addEventListener("click", function () {
 
 function addItem() {
   var ul = document.querySelector("#dynamic-list");
-  var locationDisplayA = localStorage.getItem(locationA);
-  var locationDisplayB = localStorage.getItem(locationB);
+  var locationDisplayA = localStorage.getItem("origin");
+  var locationDisplayB = localStorage.getItem("destination");
   // create variable li
   // set it document.createElement(<li>)
 
   var li = document.createElement("li");
 
   // build
-  li.textContent = "test string";
+  li.textContent =
+    "test string" + locationDisplayA + "another string" + locationDisplayB;
   // place
 
   // li.setAttribute('addHere', location);
