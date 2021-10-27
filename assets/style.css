@@ -1,20 +1,39 @@
 * {
-  /* border-style: solid; */
-  /* border-style: rgb(195, 0, 255); */
-  /* border-style: 1px; */
-  background: rgb(157, 78, 221);
+  background: rgb(24, 78, 119);
 }
 :root {
-  --o1: rgb(255, 109, 0);
-  --o2: rgb(255, 121, 0);
-  --o3: rgb(255, 133, 0);
-  --o4: rgb(255, 145, 0);
-  --o5: rgb(255, 158, 0);
-  --prp1: rgb(36, 0, 70);
-  --prp2: rgb(60, 9, 108);
-  --prp3: rgb(90, 24, 154);
-  --prp4: rgb(123, 44, 191);
-  --prp5: rgb(157, 78, 221);
+  --o1: rgb(82, 182, 154);
+  --o2: rgb(118, 200, 147);
+  --o3: rgb(153, 217, 140);
+  --o4: rgb(181, 228, 140);
+  --o5: rgb(217, 237, 146);
+  --prp1: rgb(52, 160, 164);
+  --prp2: rgb(22, 138, 173);
+  --prp3: rgb(26, 117, 159);
+  --prp4: rgb(30, 96, 145);
+  --prp5: rgb(24, 78, 119);
+}
+
+#submit {
+  background-color: var(--prp3);
+  margin: 2px;
+  margin-top: 6px;
+}
+
+#submit:hover {
+  background-color: var(--prp1);
+}
+
+#submit:active {
+  background-color: var(--prp5);
+}
+
+body {
+  padding: 8px;
+}
+
+.my-element {
+  padding-bottom: 100%;
 }
 
 #title-box {
@@ -24,30 +43,34 @@
 #title {
   text-align: center;
   background-color: var(--prp5);
-  color: white;
+  color: rgb(240, 236, 236);
   border: none;
 }
 
 #title-p {
   background-color: var(--prp5);
 }
+#four-columns {
+}
+
 #name-box {
   background-color: var(--o1);
-  margin-left: 40px;
 }
 
 #name {
 }
 
+#field-boxes {
+}
 #field-a-box {
-  background-color: var(--o5);
+  background-color: var(--o2);
 }
 
 #origin-field {
 }
 
 #field-b-box {
-  background-color: var(--o5);
+  background-color: var(--o2);
 }
 
 #output-field {
@@ -58,6 +81,7 @@
 }
 p {
   background-color: var(--prp5);
+  color: rgb(240, 236, 236);
 }
 #memory-container {
   background-color: var(--prp1);
@@ -68,9 +92,27 @@ p {
 }
 #memoryp {
   background-color: var(--prp1);
-  color: white;
+  color: rgb(240, 236, 236);
 }
 
 #last-searched-box {
   background-color: var(--o3);
 }
+
+@media screen and (max-width: 1279px) {
+  .my-element {
+    background: var(--prp5);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .my-element {
+    background: var(--prp5);
+  }
+}
+
+/* @media screen and (min-width: 768px) {
+  .my-element {
+    background: orange;
+  }
+} */

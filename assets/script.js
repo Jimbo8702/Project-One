@@ -12,10 +12,6 @@ function setTripInput(){
   localStorage.
 }
 //FUNCTIONS
-function setUserInput() {}
-//gets the user input and puts it into local storage
-//set field A and field B
-//Doing this outside of a function
 function tripOptions() {}
 //select trip options from an array
 //walk, drive, etc
@@ -48,9 +44,9 @@ function getLocationA() {
     console.log(response);
     locationA.latitude = response.data[0].latitude;
     locationA.longitude = response.data[0].longitude;
-    // locationA.longitude = locationA.longitude * -1;
     console.log("origin " + locationA.latitude);
     localStorage.setItem("locationA", JSON.stringify(locationA));
+    return locationA;
   });
 }
 function getLocationB() {
@@ -67,9 +63,9 @@ function getLocationB() {
     console.log(response);
     locationB.latitude = response.data[0].latitude;
     locationB.longitude = response.data[0].longitude;
-    // locationB.longitude = locationB.longitude * -1;
     console.log("destination " + locationB.latitude);
     localStorage.setItem("locationB", JSON.stringify(locationB));
+    return locationB;
   });
 }
 
@@ -101,6 +97,87 @@ function getRoute() {
     });
 }
 
+function setRoute() {
+  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+  var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  var locationOne = locOrigin.latitude + "," + locOrigin.longitude;
+  var locationTwo = locDestination.latitude + "," + locDestination.longitude;
+
+  // Instantiate a map and platform object:
+  var platform = new H.service.Platform({
+    apikey: "owwQPmvcB76JMPSBwfPmXyceEJS1h6eYxi1Sx1bblfI",
+  });
+  // Retrieve the target element for the map:
+  var targetElement = document.getElementById("map-container");
+
+  // Get the default map types from the platform object:
+  var defaultLayers = platform.createDefaultLayers();
+
+  // Instantiate the map:
+  var map = new H.Map(
+    document.getElementById("map-container"),
+    defaultLayers.vector.normal.map,
+    {
+      zoom: 10,
+      center: { lat: 52.51, lng: 13.4 },
+    }
+  );
+
+  // Create the parameters for the routing request:
+  var routingParameters = {
+    routingMode: "fast",
+    transportMode: "car",
+    // The start point of the route:
+    origin: locationOne,
+    // The end point of the route:
+    destination: locationTwo,
+    // Include the route shape in the response
+    return: "polyline",
+  };
+
+  // Define a callback function to process the routing response:
+  var onResult = function (result) {
+    // ensure that at least one route was found
+    if (result.routes.length) {
+      result.routes[0].sections.forEach((section) => {
+        // Create a linestring to use as a point source for the route line
+        let linestring = H.geo.LineString.fromFlexiblePolyline(
+          section.polyline
+        );
+
+        // Create a polyline to display the route:
+        let routeLine = new H.map.Polyline(linestring, {
+          style: { strokeColor: "blue", lineWidth: 3 },
+        });
+
+        // Create a marker for the start point:
+        let startMarker = new H.map.Marker(section.departure.place.location);
+
+        // Create a marker for the end point:
+        let endMarker = new H.map.Marker(section.arrival.place.location);
+
+        // Add the route polyline and the two markers to the map:
+        map.addObjects([routeLine, startMarker, endMarker]);
+
+        // Set the map's viewport to make the whole route visible:
+        map
+          .getViewModel()
+          .setLookAtData({ bounds: routeLine.getBoundingBox() });
+      });
+    }
+  };
+
+  // Get an instance of the routing service version 8:
+  var router = platform.getRoutingService(null, 8);
+
+  // Call calculateRoute() with the routing parameters,
+  // the callback and an error callback function (called if a
+  // communication error occurs):
+  router.calculateRoute(routingParameters, onResult, function (error) {
+    alert(error.message);
+  });
+}
+
 //Functions below are intended to aggregate all saved trips total cost and CO2 impact. The .key placeholder will need to be updated once the localStorage object is populated from APIs. Functions will also need to be nested within other functions.""
 
 // function totalCost() {
@@ -127,24 +204,28 @@ function getRoute() {
 // <<<<<<< HEAD
 // =======
 // >>>>>>> main
+<<<<<<< HEAD
 tripName.addEventListener("click", function () {
   var trip = document.getElementById("trip-name");
   localStorage.setItem("trip-name", trip.value);
 });
 lockInA.addEventListener("click", function () {
+=======
+
+function setLocation() {
+>>>>>>> efdc264cfdff0dcab46d4a1b4bb3882a3c9cc314
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("origin", startLocation.value);
-});
-lockInB.addEventListener("click", function () {
   var endLocation = document.getElementById("output-field");
   localStorage.setItem("destination", endLocation.value);
-});
+}
+
 submit.addEventListener("click", function () {
-  var origin = localStorage.getItem("origin");
-  var destination = localStorage.getItem("destination");
-  locationA.name = origin;
-  locationB.name = destination;
+  setLocation();
+  locationA.name = document.getElementById("origin-field").value;
+  locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
   getRoute();
+  setRoute();
 });
