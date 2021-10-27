@@ -44,10 +44,9 @@ function getLocationA() {
     console.log(response);
     locationA.latitude = response.data[0].latitude;
     locationA.longitude = response.data[0].longitude;
-    locationA.longitude = locationA.longitude * -1;
     console.log("origin " + locationA.latitude);
     localStorage.setItem("locationA", JSON.stringify(locationA));
-    console.log("New attempt" + localStorage.getItem("locationA"));
+    return locationA;
   });
 }
 function getLocationB() {
@@ -64,17 +63,17 @@ function getLocationB() {
     console.log(response);
     locationB.latitude = response.data[0].latitude;
     locationB.longitude = response.data[0].longitude;
-    locationB.longitude = locationB.longitude * -1;
     console.log("destination " + locationB.latitude);
     localStorage.setItem("locationB", JSON.stringify(locationB));
+    return locationB;
   });
 }
 
 function getRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
-  var locationOne = locOrigin.latitude + "," + locOrigin.longitude;
-  var locationTwo = locDestination.latitude + "," + locDestination.longitude;
+  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
   var formofTransportation = "driving-car";
   var routeApi =
     "https://api.openrouteservice.org/v2/directions/" +
@@ -97,8 +96,23 @@ function getRoute() {
       console.log(data);
     });
 }
-//we need to multiply by negative one
 
+//Functions below are intended to aggregate all saved trips total cost and CO2 impact. The .key placeholder will need to be updated once the localStorage object is populated from APIs. Functions will also need to be nested within other functions.""
+
+// function totalCost() {
+//   var sum = 0;
+//   for (x = 0; x < localStorage.length; x++) {
+//     sum += localStorage.key[i];
+//   }
+//   return sum;
+// }
+// function totalCO2() {
+//   var CO2 = 0;
+//   for (x = 0; x < localStorage.length; x++) {
+//     CO2 += localStorage.key[i];
+//   }
+//   return CO2;
+// }
 //USER Interaction
 
 //Inilizations
@@ -110,21 +124,18 @@ function getRoute() {
 // =======
 // >>>>>>> main
 
-lockInA.addEventListener("click", function () {
+function setLocation() {
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("origin", startLocation.value);
-});
-lockInB.addEventListener("click", function () {
   var endLocation = document.getElementById("output-field");
   localStorage.setItem("destination", endLocation.value);
-});
+}
+
 submit.addEventListener("click", function () {
-  var origin = localStorage.getItem("origin");
-  var destination = localStorage.getItem("destination");
-  locationA.name = origin;
-  locationB.name = destination;
+  setLocation();
+  locationA.name = document.getElementById("origin-field").value;
+  locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
-
   getRoute();
 });
