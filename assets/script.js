@@ -44,9 +44,9 @@ function getLocationA() {
     console.log(response);
     locationA.latitude = response.data[0].latitude;
     locationA.longitude = response.data[0].longitude;
-    // locationA.longitude = locationA.longitude * -1;
     console.log("origin " + locationA.latitude);
     localStorage.setItem("locationA", JSON.stringify(locationA));
+    return locationA;
   });
 }
 function getLocationB() {
@@ -63,9 +63,9 @@ function getLocationB() {
     console.log(response);
     locationB.latitude = response.data[0].latitude;
     locationB.longitude = response.data[0].longitude;
-    // locationB.longitude = locationB.longitude * -1;
     console.log("destination " + locationB.latitude);
     localStorage.setItem("locationB", JSON.stringify(locationB));
+    return locationB;
   });
 }
 
@@ -124,19 +124,17 @@ function getRoute() {
 // =======
 // >>>>>>> main
 
-lockInA.addEventListener("click", function () {
+function setLocation() {
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("origin", startLocation.value);
-});
-lockInB.addEventListener("click", function () {
   var endLocation = document.getElementById("output-field");
   localStorage.setItem("destination", endLocation.value);
-});
+}
+
 submit.addEventListener("click", function () {
-  var origin = localStorage.getItem("origin");
-  var destination = localStorage.getItem("destination");
-  locationA.name = origin;
-  locationB.name = destination;
+  setLocation();
+  locationA.name = document.getElementById("origin-field").value;
+  locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
   getRoute();
