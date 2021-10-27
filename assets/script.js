@@ -44,10 +44,9 @@ function getLocationA() {
     console.log(response);
     locationA.latitude = response.data[0].latitude;
     locationA.longitude = response.data[0].longitude;
-    locationA.longitude = locationA.longitude * -1;
+    // locationA.longitude = locationA.longitude * -1;
     console.log("origin " + locationA.latitude);
     localStorage.setItem("locationA", JSON.stringify(locationA));
-    console.log("New attempt" + localStorage.getItem("locationA"));
   });
 }
 function getLocationB() {
@@ -64,7 +63,7 @@ function getLocationB() {
     console.log(response);
     locationB.latitude = response.data[0].latitude;
     locationB.longitude = response.data[0].longitude;
-    locationB.longitude = locationB.longitude * -1;
+    // locationB.longitude = locationB.longitude * -1;
     console.log("destination " + locationB.latitude);
     localStorage.setItem("locationB", JSON.stringify(locationB));
   });
@@ -73,8 +72,8 @@ function getLocationB() {
 function getRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
-  var locationOne = locOrigin.latitude + "," + locOrigin.longitude;
-  var locationTwo = locDestination.latitude + "," + locDestination.longitude;
+  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
   var formofTransportation = "driving-car";
   var routeApi =
     "https://api.openrouteservice.org/v2/directions/" +
@@ -97,7 +96,6 @@ function getRoute() {
       console.log(data);
     });
 }
-//we need to multiply by negative one
 
 //USER Interaction
 
@@ -125,6 +123,5 @@ submit.addEventListener("click", function () {
   locationB.name = destination;
   getLocationA();
   getLocationB();
-
   getRoute();
 });
