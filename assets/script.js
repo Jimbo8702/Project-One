@@ -227,12 +227,13 @@ function workAround2() {
   console.log("work around 2");
   var tripName = document.querySelector("#trip-name").value;
   setLocation();
-  locationA.name = document.getElementById("origin-field").value;
-  locationB.name = document.getElementById("output-field").value;
+
   getLocationA();
   getLocationB();
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  locationA.name = locOrigin.name;
+  locationB.name = locDestination.name;
   var oLat = locOrigin.latitude;
   var oLong = locOrigin.longitude;
   var dLat = locDestination.latitude;

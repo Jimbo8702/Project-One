@@ -39,7 +39,9 @@ body {
   padding-bottom: 100%;
 }
 
-#title-box {
+#title-box,
+#title-p,
+#results-output {
   background-color: var(--prp5);
 }
 
@@ -48,10 +50,6 @@ body {
   background-color: var(--prp5);
   color: rgb(240, 236, 236);
   border: none;
-}
-
-#title-p {
-  background-color: var(--prp5);
 }
 
 #dynamic-list {
@@ -76,9 +74,6 @@ body {
   background-color: var(--o2);
 }
 
-#results-output {
-  background-color: var(--prp5);
-}
 p {
   background-color: var(--prp5);
   color: rgb(240, 236, 236);
