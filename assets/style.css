@@ -109,6 +109,59 @@ p {
   border: 5px solid black;
   color: white;
 }
+@media screen and (max-width: 360px) {
+  #memory-box {
+    height: 400px;
+    width: 360px;
+    border: 1px solid black;
+    color: white;
+  }
+}
+@media screen and (max-width: 360px) {
+  #map-container {
+    height: 400px;
+    width: 360px;
+    border: 1px solid black;
+    color: white;
+  }
+}
+@media screen and (max-width: 360px) {
+  #trip-details {
+    height: 100px;
+    width: 360px;
+    border: 1px solid black;
+    color: white;
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 360px) {
+  #calculations {
+    height: 260px;
+    width: 360px;
+    border: 1px solid black;
+    color: white;
+    font-size: 12px;
+    padding-left: 3px;
+  }
+}
+@media screen and (max-width: 360px) {
+  #name-box {
+    margin-right: 15px;
+  }
+}
+@media screen and (max-width: 360px) {
+  #four-columns {
+    margin-right: 15px;
+  }
+}
+@media screen and (min-width: 768px) {
+  #map-container {
+    height: 400px;
+    width: 360px;
+    border: 5px solid black;
+    color: white;
+  }
+}
 
 /* @media screen and (min-width: 768px) {
   .my-element {
