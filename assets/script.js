@@ -207,4 +207,25 @@ submit.addEventListener("click", function () {
   getLocationB();
   // getRoute();
   setRoute();
+  addItem();
 });
+
+function addItem() {
+  var ul = document.querySelector("#dynamic-list");
+  var locationDisplayA = localStorage.getItem("origin");
+  var locationDisplayB = localStorage.getItem("destination");
+  // create variable li
+  // set it document.createElement(<li>)
+
+  var li = document.createElement("li");
+
+  // build
+  li.textContent =
+    "test string" + locationDisplayA + "another string" + locationDisplayB;
+  // place
+
+  // li.setAttribute('addHere', location);
+  // // incorrect
+  // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
+  ul.appendChild(li);
+}
