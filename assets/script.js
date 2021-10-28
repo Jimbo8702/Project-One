@@ -107,6 +107,8 @@ function setRoute() {
 
   // Get the default map types from the platform object:
   var defaultLayers = platform.createDefaultLayers();
+  var clean = document.getElementById("map-container");
+  clean.innerHTML = "";
 
   // Instantiate the map:
   var map = new H.Map(
