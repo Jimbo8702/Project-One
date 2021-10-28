@@ -228,7 +228,9 @@ function addItem(a, b, tripName) {
   h4.textContent = "Going from " + a + " to " + b;
   // place
   li.textContent =
+
     "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
+
   console.log(li.textContent);
   // li.setAttribute('addHere', location);
   // // incorrect
