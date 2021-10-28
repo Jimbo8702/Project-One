@@ -229,14 +229,9 @@ function workAround2() {
 }
 
 var lockIn = document.querySelector("#lock-in");
-<<<<<<< HEAD
-lockIn.addEventListener("click", workAround);
-submit.addEventListener("click", workAround);
-=======
 lockIn.addEventListener("click", workAround1);
 
 submit.addEventListener("click", workAround2);
->>>>>>> main
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
