@@ -235,13 +235,12 @@ submit.addEventListener("click", workAround2);
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
-var calculations = document.querySelector("#calculations");
+// var calculations = document.querySelector("#calculations");
 
 function addItem(a, b, tripName) {
   // create variable li
   // set it document.createElement(<li>)
   console.log(a + b + tripName);
-
   var li = document.createElement("li");
   // build
   h4.textContent = "Going from " + a + " to " + b;
