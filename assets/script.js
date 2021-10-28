@@ -236,9 +236,6 @@ function addItem(a, b, tripName) {
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
   lastSearch.appendChild(li);
-  {
-    li.setAttribute("id", "para-1");
-  }
 }
 
 $("#clear").click(function () {
