@@ -208,6 +208,7 @@ function workAround() {
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
+
   setRoute();
   addItem(locationA.name, locationB.name, tripName);
 }
@@ -228,7 +229,6 @@ function addItem(a, b, tripName) {
   h4.textContent = "Going from " + a + " to " + b;
   // place
   li.textContent =
-
     "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
 
   console.log(li.textContent);
@@ -236,8 +236,28 @@ function addItem(a, b, tripName) {
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
   lastSearch.appendChild(li);
+  {
+    li.setAttribute("id", "para-1");
+  }
 }
 
 $("#clear").click(function () {
   $(lastSearch).empty();
 });
+
+// function displayCalculations() {
+//   submit.addEventListener("click", workAround);
+//   var calculations = document.querySelector("#calculations");
+//   function addItem(a, b, tripName) {
+//     // create variable li
+//     // set it document.createElement(<li>)
+//     console.log(a + b + tripName);
+//     var liCalc = document.createElement("li");
+//     // build
+
+//     // place
+//     li.textContent =
+
+//       "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
+
+// };
