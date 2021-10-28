@@ -201,7 +201,7 @@ function setLocation() {
   localStorage.setItem("destination", endLocation.value);
 }
 
-submit.addEventListener("click", function () {
+function workAround() {
   var tripName = document.getElementById("trip-name").value;
   console.log("this is the trip name: " + tripName);
   setLocation();
@@ -209,10 +209,14 @@ submit.addEventListener("click", function () {
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
-  // getRoute();
   setRoute();
   addItem(locationA.name, locationB.name);
-});
+}
+
+var lockIn = document.querySelector("#lock-in");
+lockIn.addEventListener("click", workAround);
+
+submit.addEventListener("click", workAround);
 
 function addItem(a, b) {
   var h4 = document.querySelector("#dynamic-list");

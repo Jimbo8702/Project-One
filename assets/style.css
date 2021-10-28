@@ -11,17 +11,20 @@
   --prp5: rgb(24, 78, 119);
 }
 
-#submit {
+#submit,
+#lock-in {
   background-color: var(--prp3);
   margin: 2px;
   margin-top: 6px;
 }
 
-#submit:hover {
+#submit:hover,
+#lock-in:hover {
   background-color: var(--prp1);
 }
 
-#submit:active {
+#submit:active,
+#lock-in:active {
   background-color: var(--prp5);
 }
 
