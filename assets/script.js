@@ -63,35 +63,36 @@ function getLocationB() {
   });
 }
 
-function getRoute() {
-  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
-  var locDestination = JSON.parse(localStorage.getItem("locationB"));
-  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
-  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
-  var formofTransportation = "driving-car";
-  var routeApi =
-    "https://api.openrouteservice.org/v2/directions/" +
-    formofTransportation +
-    "?api_key=" +
-    openRoutesApiKey +
-    "&start=" +
-    locationOne +
-    "&end=" +
-    locationTwo;
-  console.log(routeApi);
-  $.ajax({
-    url: routeApi,
-    method: "GET",
-  })
-    .then(function (response) {
-      console.log(response);
-    })
-    .then(function (data) {
-      console.log(data);
-    });
-}
+// function getRoute() {
+//   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+//   var locDestination = JSON.parse(localStorage.getItem("locationB"));
+//   var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+//   var locationTwo = locDestination.longitude + "," + locDestination.latitude;
+//   var formofTransportation = "driving-car";
+//   var routeApi =
+//     "https://api.openrouteservice.org/v2/directions/" +
+//     formofTransportation +
+//     "?api_key=" +
+//     openRoutesApiKey +
+//     "&start=" +
+//     locationOne +
+//     "&end=" +
+//     locationTwo;
+//   console.log(routeApi);
+//   $.ajax({
+//     url: routeApi,
+//     method: "GET",
+//   })
+//     .then(function (response) {
+//       console.log(response);
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//     });
+// }
 
 hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
+
 function setRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
@@ -107,6 +108,7 @@ function setRoute() {
 
   // Get the default map types from the platform object:
   var defaultLayers = platform.createDefaultLayers();
+  console.log(defaultLayers);
   var clean = document.getElementById("map-container");
   clean.innerHTML = "";
 
@@ -210,6 +212,8 @@ submit.addEventListener("click", function () {
   // getRoute();
   setRoute();
   addItem();
+  var submitFor = document.getElementById("map-container");
+  submitFor.textContent = "PRESS SUBMIT FOR YOUR RESULTS";
 });
 
 function addItem() {
@@ -220,7 +224,6 @@ function addItem() {
   // set it document.createElement(<li>)
 
   var li = document.createElement("li");
-
   // build
   li.textContent =
     "test string" + locationDisplayA + "another string" + locationDisplayB;
