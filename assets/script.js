@@ -203,6 +203,10 @@ function setLocation() {
 var mapCon = document.querySelector("#map-container");
 mapCon.textContent = "Submit your Inputs for Results";
 
+var li1Trip = document.querySelector("#li1Trip");
+var li2Or = document.querySelector("#li2Or");
+var li3Ds = document.querySelector("#li3Ds");
+var li4Co = document.querySelector("#li4Co");
 function workAround1() {
   console.log("workaround 1");
   setLocation();
@@ -213,6 +217,10 @@ function workAround1() {
   var mapCon = document.querySelector("#map-container");
   mapCon.textContent = "Submit your Inputs for Results";
   h4.textContent = "";
+  li1Trip.textContent = "";
+  li2Or.textContent = "";
+  li3Ds.textContent = "";
+  li4Co.textContent = "";
 }
 
 function workAround2() {
@@ -226,11 +234,14 @@ function workAround2() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
   var oLat = locOrigin.latitude;
-  var oLong = locorigin.longitude;
+  var oLong = locOrigin.longitude;
   var dLat = locDestination.latitude;
   var dLong = locDestination.longitude;
   var co2 = getDistance(oLat, dLat, oLong, dLong);
-  console.log(co2);
+  li1Trip.textContent = " " + tripName;
+  li2Or.textContent = " " + locOrigin.name;
+  li3Ds.textContent = " " + locDestination.name;
+  li4Co.textContent = " " + co2 + " grams";
   setRoute();
   addItem(locationA.name, locationB.name, tripName);
 }
@@ -247,7 +258,6 @@ var calculations = document.querySelector("#calculations");
 function addItem(a, b, tripName) {
   // create variable li
   // set it document.createElement(<li>)
-  console.log(a + b + tripName);
 
   var li = document.createElement("li");
   // build
@@ -255,7 +265,6 @@ function addItem(a, b, tripName) {
   // place
   li.textContent =
     "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
-  console.log(li.textContent);
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
