@@ -238,6 +238,7 @@ function workAround2() {
   var dLat = locDestination.latitude;
   var dLong = locDestination.longitude;
   var co2 = getDistance(oLat, dLat, oLong, dLong);
+  co2 = Math.round((co2 + Number.EPSILON) * 100) / 100;
   li1Trip.textContent = " " + tripName;
   li2Or.textContent = " " + locOrigin.name;
   li3Ds.textContent = " " + locDestination.name;
@@ -261,7 +262,7 @@ function addItem(a, b, tripName) {
 
   var li = document.createElement("li");
   // build
-  h4.textContent = "Going from " + a + " to " + b;
+  h4.textContent = "Your trip will take you from " + a + " to " + b;
   // place
   li.textContent =
     "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;

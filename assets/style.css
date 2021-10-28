@@ -60,26 +60,20 @@ body {
   font-weight: 700;
 }
 
-#four-columns {
-}
-
 #name-box {
   background-color: var(--o1);
   margin-left: 1rem;
 }
 
-#name {
+#trip-details {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 #field-a-box,
 #field-b-box {
   background-color: var(--o2);
-}
-
-#origin-field {
-}
-
-#output-field {
 }
 
 #results-output {
