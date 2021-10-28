@@ -201,7 +201,20 @@ function setLocation() {
   localStorage.setItem("destination", endLocation.value);
 }
 
-function workAround() {
+function workAround1() {
+  var tripName = document.getElementById("trip-name").value;
+  var mapArea = document.getElementById("map-container");
+  console.log("this is the trip name: " + tripName);
+  setLocation();
+  locationA.name = document.getElementById("origin-field").value;
+  locationB.name = document.getElementById("output-field").value;
+  getLocationA();
+  getLocationB();
+  setRoute();
+  addItem(locationA.name, locationB.name);
+}
+
+function workAround2() {
   var tripName = document.getElementById("trip-name").value;
   console.log("this is the trip name: " + tripName);
   setLocation();
@@ -214,9 +227,9 @@ function workAround() {
 }
 
 var lockIn = document.querySelector("#lock-in");
-lockIn.addEventListener("click", workAround);
+lockIn.addEventListener("click", workAround1);
 
-submit.addEventListener("click", workAround);
+submit.addEventListener("click", workAround2);
 
 function addItem(a, b) {
   var h4 = document.querySelector("#dynamic-list");
