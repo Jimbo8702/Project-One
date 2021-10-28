@@ -226,12 +226,12 @@ function workAround2() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
   var oLat = locOrigin.latitude;
-  var oLong = locOrigin.longitude;
+  var oLong = locorigin.longitude;
   var dLat = locDestination.latitude;
   var dLong = locDestination.longitude;
-  setRoute();
   var co2 = getDistance(oLat, dLat, oLong, dLong);
   console.log(co2);
+  setRoute();
   addItem(locationA.name, locationB.name, tripName);
 }
 
@@ -289,5 +289,5 @@ function getDistance(lat1, lat2, lon1, lon2) {
   let r = 6371;
 
   // calculate the result
-  return c * r * 0.62 * 411;
+  return c * r * 0.63 * 411;
 }
