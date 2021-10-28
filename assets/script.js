@@ -200,8 +200,23 @@ function setLocation() {
   var endLocation = document.getElementById("output-field");
   localStorage.setItem("destination", endLocation.value);
 }
+var mapCon = document.querySelector("#map-container");
+mapCon.textContent = "Submit your Inputs for Results";
+function workAround1() {
+  console.log("workaround 1");
+  setLocation();
+  locationA.name = document.getElementById("origin-field").value;
+  locationB.name = document.getElementById("output-field").value;
+  getLocationA();
+  getLocationB();
+  setRoute();
+  var mapCon = document.querySelector("#map-container");
+  mapCon.textContent = "Submit your Inputs for Results";
+  h4.textContent = "";
+}
 
-function workAround() {
+function workAround2() {
+  console.log("work around 2");
   var tripName = document.querySelector("#trip-name").value;
   setLocation();
   locationA.name = document.getElementById("origin-field").value;
@@ -213,9 +228,9 @@ function workAround() {
 }
 
 var lockIn = document.querySelector("#lock-in");
-lockIn.addEventListener("click", workAround);
+lockIn.addEventListener("click", workAround1);
 
-submit.addEventListener("click", workAround);
+submit.addEventListener("click", workAround2);
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
