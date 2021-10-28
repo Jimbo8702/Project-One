@@ -1,4 +1,5 @@
 //DEPENDENCES
+
 var lockInA = document.querySelector("#origin-button");
 var lockInB = document.querySelector("#ending-button");
 var submit = document.querySelector("#submit");
