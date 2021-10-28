@@ -63,33 +63,33 @@ function getLocationB() {
   });
 }
 
-// function getRoute() {
-//   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
-//   var locDestination = JSON.parse(localStorage.getItem("locationB"));
-//   var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
-//   var locationTwo = locDestination.longitude + "," + locDestination.latitude;
-//   var formofTransportation = "driving-car";
-//   var routeApi =
-//     "https://api.openrouteservice.org/v2/directions/" +
-//     formofTransportation +
-//     "?api_key=" +
-//     openRoutesApiKey +
-//     "&start=" +
-//     locationOne +
-//     "&end=" +
-//     locationTwo;
-//   console.log(routeApi);
-//   $.ajax({
-//     url: routeApi,
-//     method: "GET",
-//   })
-//     .then(function (response) {
-//       console.log(response);
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//     });
-// }
+function getRoute() {
+  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+  var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
+  var formofTransportation = "driving-car";
+  var routeApi =
+    "https://api.openrouteservice.org/v2/directions/" +
+    formofTransportation +
+    "?api_key=" +
+    openRoutesApiKey +
+    "&start=" +
+    locationOne +
+    "&end=" +
+    locationTwo;
+  console.log(routeApi);
+  $.ajax({
+    url: routeApi,
+    method: "GET",
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
 
 hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
