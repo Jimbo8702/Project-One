@@ -5,7 +5,7 @@ var lockInB = document.querySelector("#ending-button");
 var submit = document.querySelector("#submit");
 var openRoutesApiKey =
   "5b3ce3597851110001cf624821c7a5f3efe347c5ae20608b3c765691";
-var positionStackApiKey = "5e790f29e566f2f69cba98b84c761f7e";
+
 //DATA
 
 //FUNCTIONS
@@ -43,7 +43,6 @@ function getLocationA() {
     locationA.longitude = response.data[0].longitude;
     console.log("origin " + locationA.latitude);
     localStorage.setItem("locationA", JSON.stringify(locationA));
-    return locationA;
   });
 }
 function getLocationB() {
@@ -62,38 +61,38 @@ function getLocationB() {
     locationB.longitude = response.data[0].longitude;
     console.log("destination " + locationB.latitude);
     localStorage.setItem("locationB", JSON.stringify(locationB));
-    return locationB;
   });
 }
 
-function getRoute() {
-  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
-  var locDestination = JSON.parse(localStorage.getItem("locationB"));
-  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
-  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
-  var formofTransportation = "driving-car";
-  var routeApi =
-    "https://api.openrouteservice.org/v2/directions/" +
-    formofTransportation +
-    "?api_key=" +
-    openRoutesApiKey +
-    "&start=" +
-    locationOne +
-    "&end=" +
-    locationTwo;
-  console.log(routeApi);
-  $.ajax({
-    url: routeApi,
-    method: "GET",
-  })
-    .then(function (response) {
-      console.log(response);
-    })
-    .then(function (data) {
-      console.log(data);
-    });
-}
+// function getRoute() {
+//   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+//   var locDestination = JSON.parse(localStorage.getItem("locationB"));
+//   var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+//   var locationTwo = locDestination.longitude + "," + locDestination.latitude;
+//   var formofTransportation = "driving-car";
+//   var routeApi =
+//     "https://api.openrouteservice.org/v2/directions/" +
+//     formofTransportation +
+//     "?api_key=" +
+//     openRoutesApiKey +
+//     "&start=" +
+//     locationOne +
+//     "&end=" +
+//     locationTwo;
+//   console.log(routeApi);
+//   $.ajax({
+//     url: routeApi,
+//     method: "GET",
+//   })
+//     .then(function (response) {
+//       console.log(response);
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//     });
+// }
 
+hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
@@ -102,13 +101,15 @@ function setRoute() {
 
   // Instantiate a map and platform object:
   var platform = new H.service.Platform({
-    apikey: "owwQPmvcB76JMPSBwfPmXyceEJS1h6eYxi1Sx1bblfI",
+    apikey: hereApiKey,
   });
   // Retrieve the target element for the map:
   var targetElement = document.getElementById("map-container");
 
   // Get the default map types from the platform object:
   var defaultLayers = platform.createDefaultLayers();
+  var clean = document.getElementById("map-container");
+  clean.innerHTML = "";
 
   // Instantiate the map:
   var map = new H.Map(
@@ -135,6 +136,7 @@ function setRoute() {
   // Define a callback function to process the routing response:
   var onResult = function (result) {
     // ensure that at least one route was found
+
     if (result.routes.length) {
       result.routes[0].sections.forEach((section) => {
         // Create a linestring to use as a point source for the route line
@@ -193,15 +195,6 @@ function setRoute() {
 // }
 //USER Interaction
 
-//Inilizations
-// <<<<<<< HEAD
-// =======
-// <<<<<<< HEAD
-// =======
-// <<<<<<< HEAD
-// =======
-// >>>>>>> main
-
 function setLocation() {
   var startLocation = document.getElementById("origin-field");
   localStorage.setItem("origin", startLocation.value);
@@ -209,12 +202,38 @@ function setLocation() {
   localStorage.setItem("destination", endLocation.value);
 }
 
-submit.addEventListener("click", function () {
+function workAround() {
+  var tripName = document.querySelector("#trip-name").value;
   setLocation();
   locationA.name = document.getElementById("origin-field").value;
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
-  getRoute();
   setRoute();
-});
+  addItem(locationA.name, locationB.name, tripName);
+}
+
+var lockIn = document.querySelector("#lock-in");
+lockIn.addEventListener("click", workAround);
+
+submit.addEventListener("click", workAround);
+
+var h4 = document.querySelector("#dynamic-list");
+var lastSearch = document.querySelector("#past-search-list");
+function addItem(a, b, tripName) {
+  // create variable li
+  // set it document.createElement(<li>)
+  console.log(a + b + tripName);
+  var li = document.createElement("li");
+  // build
+  h4.textContent = "Going from " + a + " to " + b;
+  // place
+  li.textcontent =
+    "Trip Name: " + tripName + " Origin: " + a + " Destination: " + b;
+  console.log(li.textContent);
+  console.log("hello world");
+  // li.setAttribute('addHere', location);
+  // // incorrect
+  // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
+  lastSearch.appendChild(li);
+}

@@ -66,19 +66,17 @@
     <!-- This is the 4 columns for Trip name, field A, and field B, they will stack on mobile -->
     <div id="four-columns" class="columns is-desktop is-centered">
       <div id="name-box" class="column is-one-fifth">
-        &nbsp&nbspTrip Name<input
+        Trip Name<input
           id="name"
           class="input"
           type="text"
-          placeholder="Starting location"
-        /><button id="trip-name" class="button is-primary is-small">
-          Lock-in
-        </button>
+          placeholder="Trip Name"
+        />
       </div>
       <!-- The below colum is simply empty space -->
       <div class="column w-5 p-2"></div>
       <!-- Field A input and button -->
-      <div id="field-a-box" class="column is-two-fifths">
+      <div id="field-a-box" class="column is-one-third">
         Field A<input
           id="origin-field"
           class="input"
@@ -89,13 +87,16 @@
       <!-- The below colum is simply empty space -->
       <div class="column w-5 p-2"></div>
       <!-- Field B input and button -->
-      <div id="field-b-box" class="column is-two-fifths">
+      <div id="field-b-box" class="column is-one-third">
         Field B<input
           id="output-field"
           class="input"
           type="text"
           placeholder="Ending location"
-        /><button id="submit" class="button is-primary is-small">Submit</button>
+        /><button id="lock-in" class="button is-primary is-small">
+          Lock-In
+        </button>
+        <button id="submit" class="button is-primary is-small">Submit</button>
       </div>
     </div>
     <!-- this is the results output space -->
@@ -110,7 +111,7 @@
           is-one-quarter-fullhd
         "
       >
-        <p>This is the space for the output. Small change</p>
+        <h4 id="dynamic-list"></h4>
       </div>
     </div>
     <!-- This is the bank pulling results from local storage of previous searches -->
@@ -126,13 +127,12 @@
           is-one-quarter-fullhd
         "
       >
-        <p id="memoryp">This is the space for the last searched items.</p>
+        <div id="map-container"></div>
         <!-- This is the last searched items tagged span within the memory box NOT NEEDED FOR MVP-->
         <div id="last-searched-box" class="tags has-addons">
-          <span class="tag is-danger"
-            >Last searched item will go here! Must connect with a function that
-            retrieves by the trip name</span
-          >
+          <ul id="past-search-list">
+            Past Searches
+          </ul>
           <a class="tag is-delete"></a>
         </div>
       </div>

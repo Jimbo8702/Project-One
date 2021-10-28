@@ -1,6 +1,3 @@
-* {
-  background: rgb(24, 78, 119);
-}
 :root {
   --o1: rgb(82, 182, 154);
   --o2: rgb(118, 200, 147);
@@ -14,17 +11,20 @@
   --prp5: rgb(24, 78, 119);
 }
 
-#submit {
+#submit,
+#lock-in {
   background-color: var(--prp3);
   margin: 2px;
   margin-top: 6px;
 }
 
-#submit:hover {
+#submit:hover,
+#lock-in:hover {
   background-color: var(--prp1);
 }
 
-#submit:active {
+#submit:active,
+#lock-in:active {
   background-color: var(--prp5);
 }
 
@@ -50,27 +50,30 @@ body {
 #title-p {
   background-color: var(--prp5);
 }
+
+#dynamic-list {
+  color: white;
+  text-align: left;
+  font-weight: 700;
+}
+
 #four-columns {
 }
 
 #name-box {
   background-color: var(--o1);
+  margin-left: 1rem;
 }
 
 #name {
 }
 
-#field-boxes {
-}
-#field-a-box {
+#field-a-box,
+#field-b-box {
   background-color: var(--o2);
 }
 
 #origin-field {
-}
-
-#field-b-box {
-  background-color: var(--o2);
 }
 
 #output-field {
@@ -83,13 +86,11 @@ p {
   background-color: var(--prp5);
   color: rgb(240, 236, 236);
 }
-#memory-container {
-  background-color: var(--prp1);
-}
-
+#memory-container,
 #memory-box {
   background-color: var(--prp1);
 }
+
 #memoryp {
   background-color: var(--prp1);
   color: rgb(240, 236, 236);
@@ -109,6 +110,11 @@ p {
   .my-element {
     background: var(--prp5);
   }
+}
+#map-container {
+  height: 600px;
+  width: 600px;
+  border: 5px solid black;
 }
 
 /* @media screen and (min-width: 768px) {
