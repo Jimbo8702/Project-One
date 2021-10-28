@@ -63,61 +63,33 @@ function getLocationB() {
   });
 }
 
-function getDistance(lat1, lat2, lon1, lon2) {
-  // The math module contains a function
-  // named toRadians which converts from
-  // degrees to radians.
-  lon1 = (lon1 * Math.PI) / 180;
-  lon2 = (lon2 * Math.PI) / 180;
-  lat1 = (lat1 * Math.PI) / 180;
-  lat2 = (lat2 * Math.PI) / 180;
-
-  // Haversine formula
-  let dlon = lon2 - lon1;
-  let dlat = lat2 - lat1;
-  let a =
-    Math.pow(Math.sin(dlat / 2), 2) +
-    Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
-
-  let c = 2 * Math.asin(Math.sqrt(a));
-
-  // Radius of earth in kilometers. Use 3956
-  // for miles
-  let r = 6371;
-
-  // calculate the result
-  return c * r * 0.62 * 1.4;
+function getRoute() {
+  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+  var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
+  var formofTransportation = "driving-car";
+  var routeApi =
+    "https://api.openrouteservice.org/v2/directions/" +
+    formofTransportation +
+    "?api_key=" +
+    openRoutesApiKey +
+    "&start=" +
+    locationOne +
+    "&end=" +
+    locationTwo;
+  console.log(routeApi);
+  $.ajax({
+    url: routeApi,
+    method: "GET",
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(function (data) {
+      console.log(data);
+    });
 }
-
-// Driver code
-
-// function getRoute() {
-//   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
-//   var locDestination = JSON.parse(localStorage.getItem("locationB"));
-//   var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
-//   var locationTwo = locDestination.longitude + "," + locDestination.latitude;
-//   var formofTransportation = "driving-car";
-//   var routeApi =
-//     "https://api.openrouteservice.org/v2/directions/" +
-//     formofTransportation +
-//     "?api_key=" +
-//     openRoutesApiKey +
-//     "&start=" +
-//     locationOne +
-//     "&end=" +
-//     locationTwo;
-//   console.log(routeApi);
-//   $.ajax({
-//     url: routeApi,
-//     method: "GET",
-//   })
-//     .then(function (response) {
-//       console.log(response);
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//     });
-// }
 
 hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
@@ -251,16 +223,14 @@ function workAround2() {
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
-
-  setRoute();
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
   var oLat = locOrigin.latitude;
   var oLong = locOrigin.longitude;
   var dLat = locDestination.latitude;
   var dLong = locDestination.longitude;
-  var distance = getDistance(oLat, dLat, oLong, dLong);
-  var co2 = distance * 411;
+  setRoute();
+  var co2 = getDistance(oLat, dLat, oLong, dLong);
   console.log(co2);
   addItem(locationA.name, locationB.name, tripName);
 }
@@ -272,10 +242,13 @@ submit.addEventListener("click", workAround2);
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
+var calculations = document.querySelector("#calculations");
+
 function addItem(a, b, tripName) {
   // create variable li
   // set it document.createElement(<li>)
   console.log(a + b + tripName);
+
   var li = document.createElement("li");
   // build
   h4.textContent = "Going from " + a + " to " + b;
@@ -292,3 +265,29 @@ function addItem(a, b, tripName) {
 $("#clear").click(function () {
   $(lastSearch).empty();
 });
+
+function getDistance(lat1, lat2, lon1, lon2) {
+  // The math module contains a function
+  // named toRadians which converts from
+  // degrees to radians.
+  lon1 = (lon1 * Math.PI) / 180;
+  lon2 = (lon2 * Math.PI) / 180;
+  lat1 = (lat1 * Math.PI) / 180;
+  lat2 = (lat2 * Math.PI) / 180;
+
+  // Haversine formula
+  let dlon = lon2 - lon1;
+  let dlat = lat2 - lat1;
+  let a =
+    Math.pow(Math.sin(dlat / 2), 2) +
+    Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+
+  let c = 2 * Math.asin(Math.sqrt(a));
+
+  // Radius of earth in kilometers. Use 3956
+  // for miles
+  let r = 6371;
+
+  // calculate the result
+  return c * r * 0.62 * 411;
+}
