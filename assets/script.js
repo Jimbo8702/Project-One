@@ -228,11 +228,16 @@ function addItem(a, b, tripName) {
   h4.textContent = "Going from " + a + " to " + b;
   // place
   li.textContent =
-    "Trip Name: " + tripName + " Origin: " + a + " Destination: " + b;
+
+    "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
+
   console.log(li.textContent);
-  console.log("hello world");
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
   lastSearch.appendChild(li);
 }
+
+$("#clear").click(function () {
+  $(lastSearch).empty();
+});
