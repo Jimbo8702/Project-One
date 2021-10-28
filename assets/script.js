@@ -4,7 +4,7 @@ var lockInB = document.querySelector("#ending-button");
 var submit = document.querySelector("#submit");
 var openRoutesApiKey =
   "5b3ce3597851110001cf624821c7a5f3efe347c5ae20608b3c765691";
-var positionStackApiKey = "5e790f29e566f2f69cba98b84c761f7e";
+
 //DATA
 
 //FUNCTIONS
@@ -202,17 +202,14 @@ function setLocation() {
 }
 
 function workAround() {
-  var tripName = document.getElementById("trip-name").value;
-  var mapArea = document.getElementById("map-container");
-  mapArea.setAttribute("src");
-  console.log("this is the trip name: " + tripName);
+  var tripName = document.querySelector("#trip-name").value;
   setLocation();
   locationA.name = document.getElementById("origin-field").value;
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
   setRoute();
-  addItem(locationA.name, locationB.name);
+  addItem(locationA.name, locationB.name, tripName);
 }
 
 var lockIn = document.querySelector("#lock-in");
@@ -220,19 +217,21 @@ lockIn.addEventListener("click", workAround);
 
 submit.addEventListener("click", workAround);
 
-function addItem(a, b) {
-  var h4 = document.querySelector("#dynamic-list");
-
+var h4 = document.querySelector("#dynamic-list");
+var lastSearch = document.querySelector("#past-search-list");
+function addItem(a, b, tripName) {
   // create variable li
   // set it document.createElement(<li>)
-
-  var currentSearchContainer = document.querySelector("#memory-box");
-
+  console.log(a + b + tripName);
+  var li = document.createElement("li");
   // build
   h4.textContent = "Going from " + a + " to " + b;
   // place
-
+  li.textcontent =
+    "Trip Name: " + tripName + " Origin: " + a + " Destination: " + b;
+  console.log(li.textContent);
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
+  lastSearch.appendChild(li);
 }
