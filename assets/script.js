@@ -215,15 +215,17 @@ function workAround() {
 
 var lockIn = document.querySelector("#lock-in");
 lockIn.addEventListener("click", workAround);
-
 submit.addEventListener("click", workAround);
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
+var calculations = document.querySelector("#calculations");
+
 function addItem(a, b, tripName) {
   // create variable li
   // set it document.createElement(<li>)
   console.log(a + b + tripName);
+
   var li = document.createElement("li");
   // build
   h4.textContent = "Going from " + a + " to " + b;
@@ -241,20 +243,3 @@ function addItem(a, b, tripName) {
 $("#clear").click(function () {
   $(lastSearch).empty();
 });
-
-// function displayCalculations() {
-//   submit.addEventListener("click", workAround);
-//   var calculations = document.querySelector("#calculations");
-//   function addItem(a, b, tripName) {
-//     // create variable li
-//     // set it document.createElement(<li>)
-//     console.log(a + b + tripName);
-//     var liCalc = document.createElement("li");
-//     // build
-
-//     // place
-//     li.textContent =
-
-//       "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
-
-// };
