@@ -62,22 +62,18 @@ body {
 
 #name-box {
   background-color: var(--o1);
+  margin-left: 1rem;
 }
 
 #name {
 }
 
-#field-boxes {
-}
-#field-a-box {
+#field-a-box,
+#field-b-box {
   background-color: var(--o2);
 }
 
 #origin-field {
-}
-
-#field-b-box {
-  background-color: var(--o2);
 }
 
 #output-field {
@@ -90,13 +86,11 @@ p {
   background-color: var(--prp5);
   color: rgb(240, 236, 236);
 }
-#memory-container {
-  background-color: var(--prp1);
-}
-
+#memory-container,
 #memory-box {
   background-color: var(--prp1);
 }
+
 #memoryp {
   background-color: var(--prp1);
   color: rgb(240, 236, 236);
