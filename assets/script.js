@@ -227,7 +227,7 @@ function addItem(a, b, tripName) {
   // build
   h4.textContent = "Going from " + a + " to " + b;
   // place
-  li.textcontent =
+  li.textContent =
     "Trip Name: " + tripName + " Origin: " + a + " Destination: " + b;
   console.log(li.textContent);
   console.log("hello world");
