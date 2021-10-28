@@ -63,33 +63,33 @@ function getLocationB() {
   });
 }
 
-function getRoute() {
-  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
-  var locDestination = JSON.parse(localStorage.getItem("locationB"));
-  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
-  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
-  var formofTransportation = "driving-car";
-  var routeApi =
-    "https://api.openrouteservice.org/v2/directions/" +
-    formofTransportation +
-    "?api_key=" +
-    openRoutesApiKey +
-    "&start=" +
-    locationOne +
-    "&end=" +
-    locationTwo;
-  console.log(routeApi);
-  $.ajax({
-    url: routeApi,
-    method: "GET",
-  })
-    .then(function (response) {
-      console.log(response);
-    })
-    .then(function (data) {
-      console.log(data);
-    });
-}
+// function getRoute() {
+//   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+//   var locDestination = JSON.parse(localStorage.getItem("locationB"));
+//   var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+//   var locationTwo = locDestination.longitude + "," + locDestination.latitude;
+//   var formofTransportation = "driving-car";
+//   var routeApi =
+//     "https://api.openrouteservice.org/v2/directions/" +
+//     formofTransportation +
+//     "?api_key=" +
+//     openRoutesApiKey +
+//     "&start=" +
+//     locationOne +
+//     "&end=" +
+//     locationTwo;
+//   console.log(routeApi);
+//   $.ajax({
+//     url: routeApi,
+//     method: "GET",
+//   })
+//     .then(function (response) {
+//       console.log(response);
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//     });
+// }
 
 hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
@@ -211,25 +211,22 @@ submit.addEventListener("click", function () {
   getLocationB();
   // getRoute();
   setRoute();
-  addItem();
+  addItem(locationA.name, locationB.name);
 });
 
-function addItem() {
-  var ul = document.querySelector("#dynamic-list");
-  var locationDisplayA = localStorage.getItem("origin");
-  var locationDisplayB = localStorage.getItem("destination");
+function addItem(a, b) {
+  var h4 = document.querySelector("#dynamic-list");
+
   // create variable li
   // set it document.createElement(<li>)
 
-  var li = document.createElement("li");
+  var currentSearchContainer = document.querySelector("#memory-box");
 
   // build
-  li.textContent =
-    "test string" + locationDisplayA + "another string" + locationDisplayB;
+  h4.textContent = "Going from " + a + " to " + b;
   // place
 
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
-  ul.appendChild(li);
 }

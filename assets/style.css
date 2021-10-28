@@ -47,6 +47,13 @@ body {
 #title-p {
   background-color: var(--prp5);
 }
+
+#dynamic-list {
+  color: white;
+  text-align: left;
+  font-weight: 700;
+}
+
 #four-columns {
 }
 
