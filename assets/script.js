@@ -251,6 +251,7 @@ function workAround2() {
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
+
   setRoute();
   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
   var locDestination = JSON.parse(localStorage.getItem("locationB"));
@@ -291,3 +292,20 @@ function addItem(a, b, tripName) {
 $("#clear").click(function () {
   $(lastSearch).empty();
 });
+
+// function displayCalculations() {
+//   submit.addEventListener("click", workAround);
+//   var calculations = document.querySelector("#calculations");
+//   function addItem(a, b, tripName) {
+//     // create variable li
+//     // set it document.createElement(<li>)
+//     console.log(a + b + tripName);
+//     var liCalc = document.createElement("li");
+//     // build
+
+//     // place
+//     li.textContent =
+
+//       "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
+
+// };
