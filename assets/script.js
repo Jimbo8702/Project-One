@@ -202,6 +202,7 @@ function setLocation() {
 }
 var mapCon = document.querySelector("#map-container");
 mapCon.textContent = "Submit your Inputs for Results";
+
 function workAround1() {
   console.log("workaround 1");
   setLocation();
@@ -209,7 +210,6 @@ function workAround1() {
   locationB.name = document.getElementById("output-field").value;
   getLocationA();
   getLocationB();
-  setRoute();
   var mapCon = document.querySelector("#map-container");
   mapCon.textContent = "Submit your Inputs for Results";
   h4.textContent = "";
