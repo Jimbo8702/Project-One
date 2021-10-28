@@ -63,33 +63,33 @@ function getLocationB() {
   });
 }
 
-// function getRoute() {
-//   var locOrigin = JSON.parse(localStorage.getItem("locationA"));
-//   var locDestination = JSON.parse(localStorage.getItem("locationB"));
-//   var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
-//   var locationTwo = locDestination.longitude + "," + locDestination.latitude;
-//   var formofTransportation = "driving-car";
-//   var routeApi =
-//     "https://api.openrouteservice.org/v2/directions/" +
-//     formofTransportation +
-//     "?api_key=" +
-//     openRoutesApiKey +
-//     "&start=" +
-//     locationOne +
-//     "&end=" +
-//     locationTwo;
-//   console.log(routeApi);
-//   $.ajax({
-//     url: routeApi,
-//     method: "GET",
-//   })
-//     .then(function (response) {
-//       console.log(response);
-//     })
-//     .then(function (data) {
-//       console.log(data);
-//     });
-// }
+function getRoute() {
+  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+  var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  var locationOne = locOrigin.longitude + "," + locOrigin.latitude;
+  var locationTwo = locDestination.longitude + "," + locDestination.latitude;
+  var formofTransportation = "driving-car";
+  var routeApi =
+    "https://api.openrouteservice.org/v2/directions/" +
+    formofTransportation +
+    "?api_key=" +
+    openRoutesApiKey +
+    "&start=" +
+    locationOne +
+    "&end=" +
+    locationTwo;
+  console.log(routeApi);
+  $.ajax({
+    url: routeApi,
+    method: "GET",
+  })
+    .then(function (response) {
+      console.log(response);
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
 
 hereApiKey = "Eyu6OP6jaixmoFB0csKWxeHwbiQMA7q1ESLEtH2jDng";
 function setRoute() {
@@ -200,8 +200,23 @@ function setLocation() {
   var endLocation = document.getElementById("output-field");
   localStorage.setItem("destination", endLocation.value);
 }
+var mapCon = document.querySelector("#map-container");
+mapCon.textContent = "Submit your Inputs for Results";
 
-function workAround() {
+function workAround1() {
+  console.log("workaround 1");
+  setLocation();
+  locationA.name = document.getElementById("origin-field").value;
+  locationB.name = document.getElementById("output-field").value;
+  getLocationA();
+  getLocationB();
+  var mapCon = document.querySelector("#map-container");
+  mapCon.textContent = "Submit your Inputs for Results";
+  h4.textContent = "";
+}
+
+function workAround2() {
+  console.log("work around 2");
   var tripName = document.querySelector("#trip-name").value;
   setLocation();
   locationA.name = document.getElementById("origin-field").value;
@@ -214,8 +229,14 @@ function workAround() {
 }
 
 var lockIn = document.querySelector("#lock-in");
+<<<<<<< HEAD
 lockIn.addEventListener("click", workAround);
 submit.addEventListener("click", workAround);
+=======
+lockIn.addEventListener("click", workAround1);
+
+submit.addEventListener("click", workAround2);
+>>>>>>> main
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
@@ -232,7 +253,6 @@ function addItem(a, b, tripName) {
   // place
   li.textContent =
     "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
-
   console.log(li.textContent);
   // li.setAttribute('addHere', location);
   // // incorrect
