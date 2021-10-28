@@ -12,19 +12,22 @@
 }
 
 #submit,
-#lock-in {
+#lock-in,
+#clear {
   background-color: var(--prp3);
   margin: 2px;
   margin-top: 6px;
 }
 
 #submit:hover,
-#lock-in:hover {
+#lock-in:hover,
+#clear:hover {
   background-color: var(--prp1);
 }
 
 #submit:active,
-#lock-in:active {
+#lock-in:active,
+#clear:active {
   background-color: var(--prp5);
 }
 

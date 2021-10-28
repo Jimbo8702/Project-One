@@ -227,12 +227,15 @@ function addItem(a, b, tripName) {
   // build
   h4.textContent = "Going from " + a + " to " + b;
   // place
-  li.textcontent =
-    "Trip Name: " + tripName + " Origin: " + a + " Destination: " + b;
+  li.textContent =
+    "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
   console.log(li.textContent);
-  console.log("hello world");
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
   lastSearch.appendChild(li);
 }
+
+$("#clear").click(function () {
+  $(lastSearch).empty();
+});
