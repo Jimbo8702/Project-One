@@ -202,6 +202,8 @@ function setLocation() {
 }
 
 submit.addEventListener("click", function () {
+  var tripName = document.getElementById("trip-name").value;
+  console.log("this is the trip name: " + tripName);
   setLocation();
   locationA.name = document.getElementById("origin-field").value;
   locationB.name = document.getElementById("output-field").value;
