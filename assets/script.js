@@ -230,6 +230,7 @@ function addItem(a, b, tripName) {
   li.textcontent =
     "Trip Name: " + tripName + " Origin: " + a + " Destination: " + b;
   console.log(li.textContent);
+  console.log("hello world");
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
