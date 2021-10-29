@@ -208,7 +208,7 @@ var li2Or = document.querySelector("#li2Or");
 var li3Ds = document.querySelector("#li3Ds");
 var li4Co = document.querySelector("#li4Co");
 function workAround1() {
-  console.log("workaround 1");
+  // console.log("workaround 1");
   setLocation();
   locationA.name = document.getElementById("origin-field").value;
   locationB.name = document.getElementById("output-field").value;
@@ -224,7 +224,7 @@ function workAround1() {
 }
 
 function workAround2() {
-  console.log("work around 2");
+  // console.log("work around 2");
   var tripName = document.querySelector("#trip-name").value;
   setLocation();
 
