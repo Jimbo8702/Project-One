@@ -1,3 +1,9 @@
+/* * {
+  border: 1px solid black;
+} */
+html {
+  background-color: var(--prp5);
+}
 :root {
   --o1: rgb(82, 182, 154);
   --o2: rgb(118, 200, 147);
@@ -9,6 +15,10 @@
   --prp3: rgb(26, 117, 159);
   --prp4: rgb(30, 96, 145);
   --prp5: rgb(24, 78, 119);
+  --w: rgb(240, 236, 236);
+}
+button {
+  font-weight: bold;
 }
 
 #submit,
@@ -48,23 +58,24 @@ body {
 #title {
   text-align: center;
   background-color: var(--prp5);
-  color: rgb(240, 236, 236);
+  color: var(--w);
   border: none;
 }
 
 #dynamic-list {
-  color: white;
+  color: var(--w);
   text-align: left;
   font-weight: 700;
 }
 
 #name-box {
   background-color: var(--o1);
-  margin-left: 1rem;
+  font-weight: bold;
+  font-size: 22px;
 }
 
 #trip-details {
-  color: white;
+  color: var(--w);
   font-size: 30px;
   font-weight: 700;
 }
@@ -72,11 +83,13 @@ body {
 #field-a-box,
 #field-b-box {
   background-color: var(--o2);
+  font-weight: bold;
+  font-size: 22px;
 }
 
 p {
   background-color: var(--prp5);
-  color: rgb(240, 236, 236);
+  color: var(--w);
 }
 #memory-container,
 #memory-box {
@@ -85,13 +98,20 @@ p {
 
 #memoryp {
   background-color: var(--prp1);
-  color: rgb(240, 236, 236);
+  color: var(--w);
 }
 
 #last-searched-box {
   background-color: var(--o3);
 }
 
+footer {
+  color: var(--w);
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin: auto;
+}
 @media screen and (max-width: 1279px) {
   .my-element {
     background: var(--prp5);
@@ -103,68 +123,46 @@ p {
     background: var(--prp5);
   }
 }
-#map-container {
-  height: 600px;
-  width: 600px;
-  border: 5px solid black;
-  color: white;
-}
-@media screen and (max-width: 360px) {
-  #memory-box {
-    height: 400px;
-    width: 360px;
-    border: 1px solid black;
-    color: white;
-  }
-}
-@media screen and (max-width: 360px) {
+@media screen and (min-width: 360px) {
   #map-container {
-    height: 400px;
-    width: 360px;
+    height: 310px;
+    width: 310px;
     border: 1px solid black;
-    color: white;
-  }
-}
-@media screen and (max-width: 360px) {
-  #trip-details {
-    height: 100px;
-    width: 360px;
-    border: 1px solid black;
-    color: white;
-    font-size: 12px;
-  }
-}
-@media screen and (max-width: 360px) {
-  #calculations {
-    height: 260px;
-    width: 360px;
-    border: 1px solid black;
-    color: white;
-    font-size: 12px;
-    padding-left: 3px;
-  }
-}
-@media screen and (max-width: 360px) {
-  #name-box {
-    margin-right: 15px;
-  }
-}
-@media screen and (max-width: 360px) {
-  #four-columns {
-    margin-right: 15px;
-  }
-}
-@media screen and (min-width: 768px) {
-  #map-container {
-    height: 400px;
-    width: 360px;
-    border: 5px solid black;
-    color: white;
+    color: var(--w);
   }
 }
 
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 360px) {
+  #calculations {
+    height: 100px;
+    width: 275px;
+    border: none;
+    color: var(--w);
+    font-size: 12px;
+  }
+}
+@media screen and (min-width: 360px) {
+  #trip-details {
+    height: 100px;
+    width: 275px;
+    border: none;
+    color: var(--w);
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 360px) {
   .my-element {
-    background: orange;
+    background: var(--prp5);
+    margin-right: 3px;
+  }
+}
+/* good enough at this point! */
+/* @media screen and (max-width: 700px) {
+  #map-container {
+    height: 600px;
+    width: 600px;
+    border: 5px solid black;
+    color: white;
   }
 } */

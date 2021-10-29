@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- jsut added this -->
+    <s</script></s>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.js"></script>
     <link
       rel="stylesheet"
@@ -58,11 +59,11 @@
   </head>
   <!-- input fields -->
 
-  <body class="column is-mobile my-element">
+  <body class="is-mobile my-element">
     <!-- This is the top header or title space -->
-    <div id="title-box" class="columns is-mobile is-centered">
-      <div class="column is-half">
-        <h1 id="title" class="title mobile-is">GreenTrip Planner</h1>
+    <div id="title-box" class="is-mobile is-centered">
+      <div class="column">
+        <h1 id="title" class="title is-1">GreenTrip Planner</h1>
         <p id="title-p" class="bd-notification is-primary"></p>
       </div>
     </div>
@@ -119,14 +120,6 @@
     </div>
     <!-- This is the bank pulling results from local storage of previous searches -->
     <div id="memory-container" class="columns is-mobile is-centered">
-      <div id="calculations">
-        <ul id="trip-details">
-          <li>Trip Name:<span id="li1Trip"></span></li>
-          <li>Origin:<span id="li2Or"></span></li>
-          <li>Destination:<span id="li3Ds"></span></li>
-          <li>CO2 Emissions:<span id="li4Co"></span></li>
-        </ul>
-      </div>
       <div
         id="memory-box"
         class="
@@ -139,7 +132,16 @@
         "
       >
         <div id="map-container"></div>
+
         <!-- This is the last searched items tagged span within the memory box NOT NEEDED FOR MVP-->
+        <div id="calculations">
+          <ul id="trip-details">
+            <li>Trip Name:<span id="li1Trip"></span></li>
+            <li>Origin:<span id="li2Or"></span></li>
+            <li>Destination:<span id="li3Ds"></span></li>
+            <li>CO2 Emissions:<span id="li4Co"></span></li>
+          </ul>
+        </div>
         <div id="last-searched-box" class="tags has-addons">
           <ul id="past-search-list">
             Past Searches
@@ -148,7 +150,7 @@
         </div>
       </div>
     </div>
-
+<footer class="is-mobile is-centered">Created by Chris, Rico, Jimmie, Jarod, and Will 2021</footer>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/script.js"></script>
   </body>
