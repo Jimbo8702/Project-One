@@ -100,7 +100,7 @@ p {
 }
 
 #empty2 {
-  background-image: linear-gradient(to right, var(--o2), var(--o1), var(--o2));
+  background-image: linear-gradient(to right, var(--o2), var(--o2));
 }
 
 @media screen and (max-width: 1279px) {
