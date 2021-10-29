@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- jsut added this -->
+    <s</script></s>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="shortcut icon" type="image/jpg" href="./assets/Favicon.png" />
+    <!-- <link rel="stylesheet for GOOGLE FONTS" href="##" /> -->
+
+    <title>GreenTrip Planner</title>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-core-legacy.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-service-legacy.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-data.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
+    />
+  </head>
+  <!-- input fields -->
+
+  <body class="is-mobile my-element">
+    <!-- This is the top header or title space -->
+    <div id="title-box" class="is-mobile is-centered">
+      <div class="column">
+        <h1 id="title" class="title is-1">GreenTrip Planner</h1>
+        <p id="title-p" class="bd-notification is-primary"></p>
+      </div>
+    </div>
+    <!-- This is the 4 columns for Trip name, field A, and field B, they will stack on mobile -->
+    <div id="four-columns" class="columns is-desktop is-centered">
+      <div id="name-box" class="column is-one-fifth">
+        Trip Name<input
+          id="trip-name"
+          class="input"
+          type="text"
+          placeholder="Trip Name"
+        />
+      </div>
+      <!-- The below colum is simply empty space -->
+      <div class="column w-5 p-2" id="empty1"></div>
+      <!-- Field A input and button -->
+      <div id="field-a-box" class="column is-one-third">
+        Field A<input
+          id="origin-field"
+          class="input"
+          type="text"
+          placeholder="Starting location"
+        />
+      </div>
+      <!-- The below colum is simply empty space -->
+      <div class="column w-5 p-2" id="empty2"></div>
+      <!-- Field B input and button -->
+      <div id="field-b-box" class="column is-one-third">
+        Field B<input
+          id="output-field"
+          class="input"
+          type="text"
+          placeholder="Ending location"
+        /><button id="lock-in" class="button is-primary is-small">
+          Lock-In
+        </button>
+        <button id="submit" class="button is-primary is-small">Submit</button>
+      </div>
+    </div>
+    <!-- this is the results output space -->
+    <div id="results-output" class="columns is-mobile is-centered is-centered">
+      <div
+        class="
+          column
+          is-three-quarters-mobile
+          is-two-thirds-tablet
+          is-half-desktop
+          is-one-third-widescreen
+          is-one-quarter-fullhd
+        "
+      >
+        <h4 id="dynamic-list"></h4>
+      </div>
+    </div>
+    <!-- This is the bank pulling results from local storage of previous searches -->
+    <div id="memory-container" class="columns is-mobile is-centered">
+      <div
+        id="memory-box"
+        class="
+          column
+          is-three-quarters-mobile
+          is-two-thirds-tablet
+          is-half-desktop
+          is-one-third-widescreen
+          is-one-quarter-fullhd
+        "
+      >
+        <div id="map-container"></div>
+
+        <!-- This is the last searched items tagged span within the memory box NOT NEEDED FOR MVP-->
+        <div id="calculations">
+          <ul id="trip-details">
+            <li>Trip Name:<span id="li1Trip"></span></li>
+            <li>Origin:<span id="li2Or"></span></li>
+            <li>Destination:<span id="li3Ds"></span></li>
+            <li>CO2 Emissions:<span id="li4Co"></span></li>
+          </ul>
+        </div>
+        <div id="last-searched-box" class="tags has-addons">
+          <ul id="past-search-list">
+            Past Searches
+          </ul>
+          <button id="clear" class="button is-primary is-small">Clear</button>
+        </div>
+      </div>
+    </div>
+<footer class="is-mobile is-centered">Created by Chris, Rico, Jimmie, Jarod, and Will 2021</footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./assets/script.js"></script>
+  </body>
+</html>

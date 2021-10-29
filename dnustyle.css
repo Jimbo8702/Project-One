@@ -81,17 +81,10 @@ body {
   font-weight: 700;
 }
 
-#field-a-box {
+#field-a-box #field-b-box {
   background-color: var(--o2);
   font-weight: bold;
   font-size: 22px;
-}
-
-#field-b-box {
-  background-color: var(--o2);
-  font-weight: bold;
-  font-size: 22px;
-  /* margin-right: 12px; */
 }
 
 p {
@@ -114,7 +107,6 @@ p {
 
 #empty1 {
   background-image: linear-gradient(90deg, var(--o1), var(--o2));
-
 }
 
 #empty2 {
@@ -173,25 +165,12 @@ footer {
     margin-right: 3px;
   }
 }
-
-
-@media screen and (min-width:360px) {
-  #empty1 {
-  display:none;
-  
-}
-
-@media screen and (min-width:360px) {
-#empty2 {
-  display:none;
-}
-
 /* good enough at this point! */
 /* @media screen and (max-width: 700px) {
-  #map-container {
-    height: 600px;
-    width: 600px;
-    border: 5px solid black;
-    color: white;
-  }
-} */
+    #map-container {
+      height: 600px;
+      width: 600px;
+      border: 5px solid black;
+      color: white;
+    }
+  } */
