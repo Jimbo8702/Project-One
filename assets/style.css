@@ -39,7 +39,9 @@ body {
   padding-bottom: 100%;
 }
 
-#title-box {
+#title-box,
+#title-p,
+#results-output {
   background-color: var(--prp5);
 }
 
@@ -50,17 +52,10 @@ body {
   border: none;
 }
 
-#title-p {
-  background-color: var(--prp5);
-}
-
 #dynamic-list {
   color: white;
   text-align: left;
   font-weight: 700;
-}
-
-#four-columns {
 }
 
 #name-box {
@@ -68,7 +63,10 @@ body {
   margin-left: 1rem;
 }
 
-#name {
+#trip-details {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
 }
 
 #field-a-box,
@@ -76,15 +74,6 @@ body {
   background-color: var(--o2);
 }
 
-#origin-field {
-}
-
-#output-field {
-}
-
-#results-output {
-  background-color: var(--prp5);
-}
 p {
   background-color: var(--prp5);
   color: rgb(240, 236, 236);

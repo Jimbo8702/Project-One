@@ -203,6 +203,10 @@ function setLocation() {
 var mapCon = document.querySelector("#map-container");
 mapCon.textContent = "Submit your Inputs for Results";
 
+var li1Trip = document.querySelector("#li1Trip");
+var li2Or = document.querySelector("#li2Or");
+var li3Ds = document.querySelector("#li3Ds");
+var li4Co = document.querySelector("#li4Co");
 function workAround1() {
   console.log("workaround 1");
   setLocation();
@@ -213,17 +217,33 @@ function workAround1() {
   var mapCon = document.querySelector("#map-container");
   mapCon.textContent = "Submit your Inputs for Results";
   h4.textContent = "";
+  li1Trip.textContent = "";
+  li2Or.textContent = "";
+  li3Ds.textContent = "";
+  li4Co.textContent = "";
 }
 
 function workAround2() {
   console.log("work around 2");
   var tripName = document.querySelector("#trip-name").value;
   setLocation();
-  locationA.name = document.getElementById("origin-field").value;
-  locationB.name = document.getElementById("output-field").value;
+
   getLocationA();
   getLocationB();
-
+  var locOrigin = JSON.parse(localStorage.getItem("locationA"));
+  var locDestination = JSON.parse(localStorage.getItem("locationB"));
+  locationA.name = locOrigin.name;
+  locationB.name = locDestination.name;
+  var oLat = locOrigin.latitude;
+  var oLong = locOrigin.longitude;
+  var dLat = locDestination.latitude;
+  var dLong = locDestination.longitude;
+  var co2 = getDistance(oLat, dLat, oLong, dLong);
+  co2 = Math.round((co2 + Number.EPSILON) * 100) / 100;
+  li1Trip.textContent = " " + tripName;
+  li2Or.textContent = " " + locOrigin.name;
+  li3Ds.textContent = " " + locDestination.name;
+  li4Co.textContent = " " + co2 + " grams";
   setRoute();
   addItem(locationA.name, locationB.name, tripName);
 }
@@ -235,19 +255,18 @@ submit.addEventListener("click", workAround2);
 
 var h4 = document.querySelector("#dynamic-list");
 var lastSearch = document.querySelector("#past-search-list");
-// var calculations = document.querySelector("#calculations");
+var calculations = document.querySelector("#calculations");
 
 function addItem(a, b, tripName) {
   // create variable li
   // set it document.createElement(<li>)
-  console.log(a + b + tripName);
+
   var li = document.createElement("li");
   // build
-  h4.textContent = "Going from " + a + " to " + b;
+  h4.textContent = "Your trip will take you from " + a + " to " + b;
   // place
   li.textContent =
     "Trip Name: " + tripName + ", Origin: " + a + ", Destination: " + b;
-  console.log(li.textContent);
   // li.setAttribute('addHere', location);
   // // incorrect
   // li.appendChild (document.createTextNode("you want to go from " + locationDisplayA.value + " to " locationDisplayB.value));
@@ -257,3 +276,29 @@ function addItem(a, b, tripName) {
 $("#clear").click(function () {
   $(lastSearch).empty();
 });
+
+function getDistance(lat1, lat2, lon1, lon2) {
+  // The math module contains a function
+  // named toRadians which converts from
+  // degrees to radians.
+  lon1 = (lon1 * Math.PI) / 180;
+  lon2 = (lon2 * Math.PI) / 180;
+  lat1 = (lat1 * Math.PI) / 180;
+  lat2 = (lat2 * Math.PI) / 180;
+
+  // Haversine formula
+  let dlon = lon2 - lon1;
+  let dlat = lat2 - lat1;
+  let a =
+    Math.pow(Math.sin(dlat / 2), 2) +
+    Math.cos(lat1) * Math.cos(lat2) * Math.pow(Math.sin(dlon / 2), 2);
+
+  let c = 2 * Math.asin(Math.sqrt(a));
+
+  // Radius of earth in kilometers. Use 3956
+  // for miles
+  let r = 6371;
+
+  // calculate the result
+  return c * r * 0.63 * 411;
+}
